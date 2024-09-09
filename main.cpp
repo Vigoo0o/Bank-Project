@@ -26,12 +26,86 @@ struct stClient
     bool MarkForDelete = false;
 };
 
+bool IsAccountExist(string AccountNumber, vector<stClient> vClients)
+{
+    for (const stClient C : vClients)
+    {
+        if (C.AccountNumber == AccountNumber)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+vector<string> split(string str, string delimeter)
+{
+    vector<string> result;
+
+    short position = 0;
+    string sStr;
+
+    while ((position = str.find(delimeter)) != string::npos)
+    {
+        sStr = str.substr(0, position);
+
+        result.push_back(sStr);
+
+        str.erase(0, position + delimeter.length());
+    }
+
+    result.push_back(str);
+
+    return result;
+}
+
+stClient ConvertLineDataToRecord(string LineData, string Delimetar = "//")
+{
+    stClient Result;
+    vector<string> Data = split(LineData, Delimetar);
+
+    Result.AccountNumber = Data[0];
+    Result.PinCode = Data[1];
+    Result.Name = Data[2];
+    Result.Phone = Data[3];
+    Result.AccountBalance = stod(Data[4]);
+
+    return Result;
+}
+
+vector<stClient> LoadDataFromFileToVector(string FilePath)
+{
+    vector<stClient> vClients;
+    fstream File;
+
+    File.open(FilePath, ios::in);
+    if (File.is_open())
+    {
+        string Line;
+
+        while (getline(File, Line))
+        {
+            stClient Client = ConvertLineDataToRecord(Line);
+            vClients.push_back(Client);
+        }
+        File.close();
+    }
+    return vClients;
+}
+
 stClient ReadNewClient()
 {
     stClient Client;
+    vector<stClient> vClients = LoadDataFromFileToVector(FilePath);
 
     cout << "Account Number: ";
     getline(cin >> ws, Client.AccountNumber);
+
+    while (IsAccountExist(Client.AccountNumber, vClients))
+    {
+        cout << "Client With [" << Client.AccountNumber << "] Already Exist, Enter Another Account Number: ";
+        getline(cin >> ws, Client.AccountNumber);
+    }
 
     cout << "Pin Code: ";
     getline(cin, Client.PinCode);
@@ -93,61 +167,6 @@ void AddClients()
         cout << "\nClient add successfuly, Do you want to add more clients? y/n? ";
         cin >> Answer;
     } while (Answer == 'Y' || Answer == 'y');
-}
-
-vector<string> split(string str, string delimeter)
-{
-    vector<string> result;
-
-    short position = 0;
-    string sStr;
-
-    while ((position = str.find(delimeter)) != string::npos)
-    {
-        sStr = str.substr(0, position);
-
-        result.push_back(sStr);
-
-        str.erase(0, position + delimeter.length());
-    }
-
-    result.push_back(str);
-
-    return result;
-}
-
-stClient ConvertLineDataToRecord(string LineData, string Delimetar = "//")
-{
-    stClient Result;
-    vector<string> Data = split(LineData, Delimetar);
-
-    Result.AccountNumber = Data[0];
-    Result.PinCode = Data[1];
-    Result.Name = Data[2];
-    Result.Phone = Data[3];
-    Result.AccountBalance = stod(Data[4]);
-
-    return Result;
-}
-
-vector<stClient> LoadDataFromFileToVector(string FilePath)
-{
-    vector<stClient> vClients;
-    fstream File;
-
-    File.open(FilePath, ios::in);
-    if (File.is_open())
-    {
-        string Line;
-
-        while (getline(File, Line))
-        {
-            stClient Client = ConvertLineDataToRecord(Line);
-            vClients.push_back(Client);
-        }
-        File.close();
-    }
-    return vClients;
 }
 
 void PrintClientRecord(stClient Client)
