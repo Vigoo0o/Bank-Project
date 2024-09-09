@@ -104,11 +104,14 @@ void AddClient()
 
 void AddClients()
 {
+    cout << "-----------------------------------\n";
+    cout << "\tAdd New Client Screen\n";
+    cout << "-----------------------------------\n";
+
     char Answer = 'N';
 
     do
     {
-        system("clear");
 
         cout << "Adding New Client:\n\n";
         AddClient();
@@ -277,6 +280,10 @@ string ReadAccountNumber()
 
 void DeleteAccount()
 {
+
+    cout << "-----------------------------------\n";
+    cout << "\tDelete Client Screen\n";
+    cout << "-----------------------------------\n\n";
     string AccountNumber = ReadAccountNumber();
     vector<stClient> vClients = LoadDataFromFileToVector(FilePath);
     stClient Client;
@@ -337,6 +344,9 @@ bool GetClientToUpdate(string AccountNumber, vector<stClient> &vClients)
 
 void UpdateClient()
 {
+    cout << "-----------------------------------\n";
+    cout << "\tUpdate Client Screen\n";
+    cout << "-----------------------------------\n\n";
     string AccountNumber = ReadAccountNumber();
     stClient Client;
     vector<stClient> vClients = LoadDataFromFileToVector(FilePath);
@@ -364,6 +374,9 @@ void UpdateClient()
 
 void FindClient()
 {
+    cout << "-----------------------------------\n";
+    cout << "\tFind Client Screen\n";
+    cout << "-----------------------------------\n\n";
     string AccountNumber = ReadAccountNumber();
     vector<stClient> vClients = LoadDataFromFileToVector(FilePath);
     stClient Client;
@@ -380,7 +393,9 @@ void FindClient()
 
 void ShowEndScreen()
 {
-    cout << "End Screen\n";
+    cout << "------------------------------\n";
+    cout << "\tEnd Screen <3\n";
+    cout << "------------------------------\n";
 }
 
 void GoBackToMainMenue()
