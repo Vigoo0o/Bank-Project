@@ -9,7 +9,6 @@ This project is a simple **Bank Management System** built in C++ as part of the 
 #### Transactions Menu
 - **Deposit Money**: Users can now select a client and deposit money into their account. The balance is automatically updated and saved.
 - **Withdraw Money**: Clients can withdraw money from their accounts, with built-in checks to prevent overdrafts.
-- **Transfer Money**: Added the ability to transfer funds between two clients. The system checks that both clients exist and ensures sufficient balance in the sender's account before completing the transfer.
 
 #### Enhanced Balance Tracking
 - The program now handles all balance updates (deposit, withdrawal, transfer) and saves the changes immediately to ensure accurate and persistent records in `clients.txt`.
