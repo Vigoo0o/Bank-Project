@@ -2,6 +2,23 @@
 
 This project is a simple **Bank Management System** built in C++ as part of the "Algorithms and Problem Solving Level 3" course from [ProgrammingAdvices.com](https://programmingadvices.com). The system manages bank clients' information such as account numbers, pin codes, names, phone numbers, and account balances.
 
+## What's New in the Bank Program
+
+### Recent Updates
+
+#### Transactions Menu
+- **Deposit Money**: Users can now select a client and deposit money into their account. The balance is automatically updated and saved.
+- **Withdraw Money**: Clients can withdraw money from their accounts, with built-in checks to prevent overdrafts.
+- **Transfer Money**: Added the ability to transfer funds between two clients. The system checks that both clients exist and ensures sufficient balance in the sender's account before completing the transfer.
+
+#### Enhanced Balance Tracking
+- The program now handles all balance updates (deposit, withdrawal, transfer) and saves the changes immediately to ensure accurate and persistent records in `clients.txt`.
+
+### Bug Fixes
+- Fixed an issue with transaction limits where users could enter amounts exceeding the account balance.
+- Resolved UI bugs for a smoother user experience when performing multiple transactions.
+
+
 ## Features
 
 - **Show Client List**: Displays a list of all clients in the system.
