@@ -1,6 +1,6 @@
 # Bank Management System
 
-This project is a simple **Bank Management System** built in C++ as part of the "Algorithms and Problem Solving Level 3" course from [ProgrammingAdvices.com](https://programmingadvices.com). The system manages bank clients' information such as account numbers, pin codes, names, phone numbers, and account balances.
+This project is a simple **Bank Management System** built in C++. The system manages bank clients' information such as account numbers, pin codes, names, phone numbers, and account balances.
 
 ## What's New in the Bank Program
 
@@ -54,7 +54,3 @@ This project is a simple **Bank Management System** built in C++ as part of the 
   - Balance
 
 - You can also update or delete client information by entering the respective client’s account number.
-
-## Credits
-
-This project was developed as part of a course provided by [ProgrammingAdvices.com](https://programmingadvices.com).
